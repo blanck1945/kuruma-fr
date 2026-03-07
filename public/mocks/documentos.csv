@@ -1,0 +1,8 @@
+patente,tipo,numero,emision,vencimiento,notas
+ABC123,seguro,POL-2025-00123,2025-01-01,2026-01-01,Mapfre Seguros
+ABC123,vtv,VTV-2025-4567,2025-03-15,2026-03-15,
+ABC123,habilitacion,HAB-2025-001,2025-01-01,2026-01-01,Municipio de Rosario
+DEF456,seguro,POL-2025-00456,2025-02-01,2026-02-01,Zurich Argentina
+DEF456,vtv,VTV-2025-8901,2024-11-10,2025-11-10,
+GHI789,seguro,POL-2025-00789,2025-03-01,2026-03-01,La Segunda
+GHI789,cedula,CED-2025-GHI,2025-01-15,2030-01-15,Cédula verde

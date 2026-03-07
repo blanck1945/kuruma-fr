@@ -1,0 +1,5 @@
+nombre,dni,licencia,vencimiento_licencia,telefono,email,notas
+Juan Pérez,30123456,B2-123456,2026-06-30,11-4567-8901,juan.perez@email.com,
+María González,27654321,B2-654321,2025-12-31,11-9876-5432,maria.g@email.com,Turno mañana
+Carlos López,35987654,D-789012,2027-03-15,11-1122-3344,clopez@email.com,Colectivos y cargas
+Ana Martínez,29111222,B2-111222,2024-09-01,11-5566-7788,,Licencia próxima a vencer

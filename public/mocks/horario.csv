@@ -1,0 +1,14 @@
+patente,conductor,fecha,hora_inicio,hora_fin,notas
+ABC123,Juan García,2026-02-10,08:00,17:00,Ruta norte
+ABC123,María López,2026-02-11,09:00,18:00,Servicio urbano
+XYZ789,Carlos Pérez,2026-02-12,07:00,15:00,Distribución zona sur
+ABC123,Juan García,2026-02-13,08:00,17:00,
+XYZ789,María López,2026-02-14,09:00,18:00,Viaje a Córdoba
+ABC123,Carlos Pérez,2026-03-03,08:00,16:00,Turno mañana
+XYZ789,Juan García,2026-03-04,16:00,00:00,Turno tarde
+ABC123,María López,2026-03-10,08:00,17:00,
+XYZ789,Carlos Pérez,2026-03-15,07:30,15:30,Entrega mercadería
+ABC123,Juan García,2026-03-20,08:00,17:00,Ruta sur
+XYZ789,María López,2026-03-25,09:00,18:00,Turno mañana
+ABC123,Carlos Pérez,2026-04-01,08:00,17:00,Inicio de mes
+XYZ789,Juan García,2026-04-05,07:00,15:00,Turno programado

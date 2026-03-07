@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Brand colors */
+  --color-brand:      #E8931A;
+  --color-brand-dim:  #7A4D0E;
+  --color-brand-glow: rgba(232, 147, 26, 0.15);
+
+  /* Surface layers */
+  --color-base:      #07070C;
+  --color-layer-1:   #0D0D16;
+  --color-layer-2:   #13131F;
+  --color-layer-3:   #191928;
+
+  /* Borders */
+  --color-edge:      #1C1C2E;
+  --color-edge-hi:   #272740;
+
+  /* Text */
+  --color-ink-1:     #F0EDE6;
+  --color-ink-2:     #7A7890;
+  --color-ink-3:     #3A3850;
+
+  /* Semantic */
+  --color-success:   #22C55E;
+  --color-ok:        #22C55E;
+  --color-danger:    #EF4444;
+  --color-warn:      #F59E0B;
+  --color-info:      #38BDF8;
+}
+
+/* ── Global ───────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-base, #07070C);
+  color: var(--color-ink-1, #F0EDE6);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scanline overlay ─────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.06) 3px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ── Scrollbar ────────────────────────────── */
+::-webkit-scrollbar          { width: 5px; height: 5px; }
+::-webkit-scrollbar-track    { background: var(--color-base, #07070C); }
+::-webkit-scrollbar-thumb    { background: var(--color-edge, #1C1C2E); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-brand, #E8931A); }
+
+/* ── Argentine license plate badge ──────────  */
+.plate-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 2px solid #003087;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.05);
+}
+.plate-band {
+  height: 6px;
+  background: #003087;
+}
+.plate-text {
+  background: #E8E4D0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0A0A0A;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ── Pulse dot animation ──────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+.pulse-dot { animation: pulse-dot 1.2s ease-in-out infinite; }
+
+/* ── Fade-in on mount ─────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fade-up 0.4s ease both; }

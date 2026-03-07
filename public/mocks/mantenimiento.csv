@@ -1,0 +1,6 @@
+patente,tipo,descripcion,fecha,km,proximo_km,prox_fecha,costo,notas
+ABC123,preventivo,Cambio de aceite y filtro,2025-01-15,45000,50000,2025-07-15,8500,Shell Helix 10W40
+ABC123,correctivo,Cambio de pastillas de freno,2025-02-10,46200,,,,Frenos delanteros
+DEF456,preventivo,Service 10000 km,2025-01-20,32000,42000,2026-01-20,15000,Incluye correa de distribución
+DEF456,revision,Alineación y balanceo,2025-03-05,33500,,,2800,
+GHI789,preventivo,Cambio de aceite,2025-02-28,18000,23000,,7200,Castrol GTX 5W30
