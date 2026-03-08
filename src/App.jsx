@@ -62,7 +62,6 @@ function PlateBadge({ plate, size = "md" }) {
 /* ── Nav ────────────────────────────────────── */
 const NAV_BASE = [
   { id: "patentes",  label: "Mi Flota" },
-  { id: "consulta",  label: "Consulta" },
 ];
 const MODULE_TABS = [
   { id: "conductores",   module: "conductores",   label: "Conductores" },
@@ -70,6 +69,7 @@ const MODULE_TABS = [
   { id: "documentos",    module: "documentos",    label: "Documentos" },
   { id: "combustible",   module: "combustible",   label: "Combustible" },
   { id: "horario",       module: "horario",       label: "Horario" },
+  { id: "consulta",      label: "Consulta" },
 ];
 
 export default function App() {
