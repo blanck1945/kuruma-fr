@@ -20,7 +20,7 @@ import FuelPage from "./features/fuel/FuelPage";
 import SchedulePage from "./features/schedule/SchedulePage";
 import { queryClient } from "./lib/queryClient";
 
-const defaultBackendUrl = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:8080";
+const defaultBackendUrl = (import.meta.env.VITE_BACKEND_URL ?? "http://localhost:8080").replace(/\/$/, "");
 const defaultApiKey = import.meta.env.VITE_API_KEY ?? "external-secret-1";
 const AUTH_KEY = "kuruma_auth";
 
