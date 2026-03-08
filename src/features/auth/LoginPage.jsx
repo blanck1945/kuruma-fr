@@ -117,15 +117,6 @@ export default function LoginPage({ backendUrl, onLogin }) {
             Ingresá con los datos de tu organización.
           </p>
 
-          {import.meta.env.DEV && (
-            <button
-              type="button"
-              onClick={() => { setEmail("test@flota.com"); setPassword("Test1234"); }}
-              className="mt-6 w-full rounded-xl border border-dashed border-warn/40 bg-warn/5 py-2 font-mono text-[11px] uppercase tracking-widest text-warn/70 transition-all hover:border-warn/70 hover:text-warn"
-            >
-              DEV · Rellenar credenciales de prueba
-            </button>
-          )}
 
           <form onSubmit={handleSubmit} className="mt-4 space-y-5">
             <FormField
@@ -158,11 +149,6 @@ export default function LoginPage({ backendUrl, onLogin }) {
             </PrimaryButton>
           </form>
 
-          {!import.meta.env.DEV && (
-            <p className="mt-8 text-center text-xs text-ink-3">
-              Prueba: test@flota.com · Test1234
-            </p>
-          )}
         </div>
       </div>
     </div>

@@ -151,14 +151,6 @@ export default function MaintenancePage({ backendUrl, apiKey, token, savedPlates
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={handleTestClick}
-            disabled={testBusy}
-            className="rounded-xl border border-edge px-3 py-2 font-display text-[10px] font-semibold uppercase tracking-widest text-ink-3 transition-all hover:border-brand/40 hover:text-brand disabled:opacity-40"
-          >
-            {testBusy ? "..." : "▶ Test"}
-          </button>
-          <button
-            type="button"
             onClick={() => { setShowImport((v) => !v); setImportMsg(""); }}
             className="rounded-xl border border-brand/40 bg-brand/10 px-4 py-2 font-display text-[10px] font-semibold uppercase tracking-widest text-brand transition-all hover:bg-brand/20"
           >

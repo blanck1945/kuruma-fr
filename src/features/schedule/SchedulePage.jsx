@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import AIExcelImport, { runMockImport } from "../../components/AIExcelImport";
+import AIExcelImport from "../../components/AIExcelImport";
 
 const IMPORT_COLS = [
   { key: "plate",          label: "Patente" },
@@ -205,11 +205,50 @@ export default function SchedulePage({ backendUrl, apiKey, token, savedPlates })
   }
 
   async function handleTestClick() {
-    setTestBusy(true); setImportMsg(""); setShowImport(true);
+    if (!drivers.length || !savedPlates.length) {
+      setImportMsg("Necesitás al menos un conductor y una patente cargados.");
+      return;
+    }
+    setTestBusy(true); setImportMsg("");
     try {
-      const rows = await runMockImport(backendUrl, apiKey, "/v1/external/parse-schedule-csv", "/mocks/horario.csv",
-        r => Boolean(r?.plate && r?.scheduled_date));
-      await handleImport(rows);
+      const today = new Date();
+      const entries = [];
+      // Generar 10 entradas distribuidas en -5 a +10 días usando drivers y patentes reales
+      const slots = [
+        { offset: -4, start: "08:00", end: "16:00" },
+        { offset: -3, start: "14:00", end: "22:00" },
+        { offset: -1, start: "07:00", end: "15:00" },
+        { offset:  0, start: "09:00", end: "17:00" },
+        { offset:  0, start: "17:00", end: "01:00" },
+        { offset:  1, start: "08:00", end: "16:00" },
+        { offset:  2, start: "06:00", end: "14:00" },
+        { offset:  3, start: "14:00", end: "22:00" },
+        { offset:  5, start: "08:00", end: "16:00" },
+        { offset:  7, start: "10:00", end: "18:00" },
+      ];
+      for (let i = 0; i < slots.length; i++) {
+        const d = new Date(today);
+        d.setDate(d.getDate() + slots[i].offset);
+        entries.push({
+          plate: savedPlates[i % savedPlates.length],
+          driver_id: drivers[i % drivers.length].id,
+          scheduled_date: d.toISOString().slice(0, 10),
+          start_time: slots[i].start,
+          end_time: slots[i].end,
+          notes: "",
+        });
+      }
+      let ok = 0;
+      for (const entry of entries) {
+        const res = await fetch(`${backendUrl}/v1/fleet/schedule`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", ...authHeader },
+          body: JSON.stringify(entry),
+        });
+        if (res.ok) ok++;
+      }
+      setImportMsg(`${ok} de ${entries.length} entradas de prueba creadas.`);
+      qc.invalidateQueries({ queryKey: scheduleKey });
     } catch (err) {
       setImportMsg(err.message);
     } finally { setTestBusy(false); }
@@ -270,14 +309,6 @@ export default function SchedulePage({ backendUrl, apiKey, token, savedPlates })
           </div>
 
           {/* Import buttons */}
-          <button
-            type="button"
-            onClick={handleTestClick}
-            disabled={testBusy}
-            className="rounded-xl border border-edge px-3 py-2 font-display text-[10px] font-semibold uppercase tracking-widest text-ink-3 transition-all hover:border-brand/40 hover:text-brand disabled:opacity-40"
-          >
-            {testBusy ? "..." : "▶ Test"}
-          </button>
           <button
             type="button"
             onClick={() => { setShowImport(v => !v); setImportMsg(""); }}

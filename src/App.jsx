@@ -69,7 +69,6 @@ const MODULE_TABS = [
   { id: "documentos",    module: "documentos",    label: "Documentos" },
   { id: "combustible",   module: "combustible",   label: "Combustible" },
   { id: "horario",       module: "horario",       label: "Horario" },
-  { id: "consulta",      label: "Consulta" },
 ];
 
 export default function App() {
@@ -555,6 +554,7 @@ export default function App() {
             {[
               ...NAV_BASE,
               ...MODULE_TABS.filter((t) => enabledModules.includes(t.module)),
+              { id: "consulta", label: "Consulta" },
               { id: "analisis", label: "Análisis" },
               { id: "settings", label: "⚙" },
             ].map(({ id, label }) => (
